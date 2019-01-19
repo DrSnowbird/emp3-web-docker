@@ -41,6 +41,25 @@ webpack-dev-server on port 3000
 ```
 ./build.sh
 ```
+
+# See also 
+* [openkbs/docker-atom-editor](https://hub.docker.com/r/openkbs/docker-atom-editor/)
+* [openkbs/eclipse-photon-docker](https://hub.docker.com/r/openkbs/eclipse-photon-docker/)
+* [openkbs/eclipse-photon-vnc-docker](https://hub.docker.com/r/openkbs/eclipse-photon-vnc-docker/)
+* [openkbs/eclipse-oxygen-docker](https://hub.docker.com/r/openkbs/eclipse-oxygen-docker/)
+* [openkbs/intellj-docker](https://hub.docker.com/r/openkbs/intellij-docker/)
+* [openkbs/intellj-vnc-docker](https://hub.docker.com/r/openkbs/intellij-vnc-docker/)
+* [openkbs/knime-vnc-docker](https://hub.docker.com/r/openkbs/knime-vnc-docker/)
+* [openkbs/netbeans9-docker](https://hub.docker.com/r/openkbs/netbeans9-docker/)
+* [openkbs/netbeans](https://hub.docker.com/r/openkbs/netbeans/)
+* [openkbs/papyrus-sysml-docker](https://hub.docker.com/r/openkbs/papyrus-sysml-docker/)
+* [openkbs/pycharm-docker](https://hub.docker.com/r/openkbs/pycharm-docker/)
+* [openkbs/scala-ide-docker](https://hub.docker.com/r/openkbs/scala-ide-docker/)
+* [openkbs/sublime-docker](https://hub.docker.com/r/openkbs/sublime-docker/)
+* [openkbs/webstorm-docker](https://hub.docker.com/r/openkbs/webstorm-docker/)
+* [openkbs/webstorm-vnc-docker](https://hub.docker.com/r/openkbs/webstorm-vnc-docker/)
+
+
 # Setup Dockerfile to Build behind Corporate Proxies
 * See [Docker Proxy](https://docs.docker.com/engine/reference/commandline/cli/ https://docs.docker.com/network/proxy/)
 
@@ -122,3 +141,82 @@ Available tasks
               serve  Alias for "eslint:all", "concurrent:prepValidation",      
                      "webpack-dev-server" tasks. 
 ```
+
+# Releases information
+```
+root@1b69cb491038:/usr# ./printVersions.sh 
++ echo JAVA_HOME=/usr/java
+JAVA_HOME=/usr/java
++ java -version
+java version "1.8.0_201"
+Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
+Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
++ mvn --version
+Apache Maven 3.6.0 (97c98ec64a1fdfee7767ce5ffb20918da4f719f3; 2018-10-24T18:41:47Z)
+Maven home: /usr/apache-maven-3.6.0
+Java version: 1.8.0_201, vendor: Oracle Corporation, runtime: /usr/jdk1.8.0_201/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "4.15.0-43-generic", arch: "amd64", family: "unix"
++ python -V
+Python 2.7.12
++ python3 -V
+Python 3.5.2
++ pip --version
+pip 18.1 from /usr/local/lib/python3.5/dist-packages/pip (python 3.5)
++ pip3 --version
+pip 18.1 from /usr/local/lib/python3.5/dist-packages/pip (python 3.5)
++ gradle --version
+
+------------------------------------------------------------
+Gradle 5.1.1
+------------------------------------------------------------
+
+Build time:   2019-01-10 23:05:02 UTC
+Revision:     3c9abb645fb83932c44e8610642393ad62116807
+
+Kotlin DSL:   1.1.1
+Kotlin:       1.3.11
+Groovy:       2.5.4
+Ant:          Apache Ant(TM) version 1.9.13 compiled on July 10 2018
+JVM:          1.8.0_201 (Oracle Corporation 25.201-b09)
+OS:           Linux 4.15.0-43-generic amd64
+
++ npm -v
+6.4.1
++ node -v
+v10.15.0
++ cat /etc/lsb-release /etc/os-release
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+NAME="Ubuntu"
+VERSION="16.04.3 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.3 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+
+```
+# Issues during Build
+You might see the following issues/warning/error messages.
+```
+Cannot download "https://github.com/sass/node-sass/releases/download/v3.13.1/linux-x64-64_binding.node": 
+
+HTTP error 404 Not Found
+
+Hint: If github.com is not accessible in your location
+      try setting a proxy via HTTP_PROXY, e.g. 
+
+      export HTTP_PROXY=http://example.com:1234
+
+or configure npm proxy via
+
+      npm config set proxy http://example.com:8080
+```
+
