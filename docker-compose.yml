@@ -12,9 +12,9 @@ services:
       - GROUP_ID=${GROUP_ID:-1000}
     env_file:
       - ./.env
-#    ports:
-#      - 8080:8080
+    ports:
+      - 3000:3000
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./data:/home/developer/data
       - ./workspace:/home/developer/workspace
 
