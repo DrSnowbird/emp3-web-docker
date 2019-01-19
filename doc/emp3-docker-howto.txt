@@ -1,0 +1,17 @@
+
+# ref: https://github.com/missioncommand/emp3-web
+
+Linux
+
+docker run --rm -it -p 3000:3000 -v $(pwd)/code:/code node:5.9.0 bin/bash
+
+# now enter the shell of container above:
+
+cd /code
+git clone https://github.com/missioncommand/emp3-web.git
+cd emp3-web
+npm install -g grunt-cli
+npm install
+grunt --force
+grunt serve
+
