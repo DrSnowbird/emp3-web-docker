@@ -53,7 +53,7 @@ RUN cd ${HOME}/emp3-web && \
 RUN sudo chown -R ${USER}:${USER} ${HOME}  
 
 ENTRYPOINT ["/usr/bin/grunt"]
-CMD ["serve"]
+CMD ["serve --force"]
 
 #### (Test only)
 #CMD ["/usr/bin/firefox"]
