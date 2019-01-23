@@ -27,30 +27,28 @@ RUN groupadd -f --gid ${GROUP_ID} ${USER} && \
     echo "${USER} ALL=NOPASSWD:ALL" | tee -a /etc/sudoers && \
     export uid=${USER_ID} gid=${GROUP_ID} && \
     chown ${USER}:${USER} -R ${HOME}
-    
-RUN mkdir -p ${HOME}/workspace && \
-    chown ${USER}:${USER} -R ${HOME}/workspace
 
-WORKDIR ${HOME}
+####################################
+#### ---- Grunt setup      ---- ####
+####################################
 
 #### --- Copy Entrypoint script in the container ---- ####
 COPY ./docker-entrypoint.sh /
 
-#### ---- EMP3 Install ----
-RUN git clone https://github.com/missioncommand/emp3-web.git
+RUN npm install -g grunt-cli  
 
-WORKDIR ${HOME}/emp3-web
-
-#### --- Enterpoint for container ---- ####
+####################################
+#### ---- EMP3 Install     ---- ####
+####################################
 USER ${USER}
+WORKDIR ${HOME}
 
-RUN cd ${HOME}/emp3-web && \
-    sudo chown -R ${USER}:${USER} ${HOME} && \
-    sudo npm install -g grunt-cli  && \
-    npm install && \
+RUN mkdir -p ${HOME}/workspace 
+
+RUN sudo chown ${USER}:${USER} ${HOME} ${HOME}/.config ${HOME}/.npm && \
+    git clone https://github.com/missioncommand/emp3-web.git && \
+    cd ${HOME}/emp3-web && npm install && \
     grunt --force
-
-RUN sudo chown -R ${USER}:${USER} ${HOME}/.npm 
 
 ####################################
 #### ---- Enterpoint setup ---- ####

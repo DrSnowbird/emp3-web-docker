@@ -31,6 +31,30 @@ else
     options=""
 fi
 
+##########################################################
+#### ---- Whether to remove previous build cache ---- ####
+#### ---- Valid value: 0 (No remove); 1 (yes, remove)
+##########################################################
+REMOVE_CACHE=0
+
+###############################################################################
+###############################################################################
+###############################################################################
+#### ---- DO NOT Change the code below UNLESS you really want to !!!!) --- ####
+#### ---- DO NOT Change the code below UNLESS you really want to !!!!) --- ####
+#### ---- DO NOT Change the code below UNLESS you really want to !!!!) --- ####
+###############################################################################
+###############################################################################
+###############################################################################
+
+##########################################################
+#### ---- Generate remove cache option if needed ---- ####
+##########################################################
+REMOVE_CACHE_OPTION=""
+if [ ${REMOVE_CACHE} -gt 0 ]; then
+    REMOVE_CACHE_OPTION="--rm"
+fi
+
 ###################################################
 #### ---- Change this only if want to use your own
 ###################################################
@@ -136,7 +160,7 @@ echo
 
 cd ${BUILD_CONTEXT}
 set -x
-docker build --rm -t ${imageTag} \
+docker build ${REMOVE_CACHE_OPTION} -t ${imageTag} \
     ${BUILD_ARGS} \
     ${options} \
     -f $(basename ${DOCKERFILE}) .
