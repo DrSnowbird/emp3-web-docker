@@ -50,8 +50,6 @@ RUN cd ${HOME}/emp3-web && \
     npm install && \
     grunt --force
 
-RUN sudo chown -R ${USER}:${USER} ${HOME}/.npm 
-
 ####################################
 #### ---- Enterpoint setup ---- ####
 ####################################
