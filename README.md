@@ -213,10 +213,10 @@ HTTP error 404 Not Found
 Hint: If github.com is not accessible in your location
       try setting a proxy via HTTP_PROXY, e.g. 
 
-      export HTTP_PROXY=http://example.com:1234
+      export HTTP_PROXY=http://proxy.openkbs.org:8080
 
-or configure npm proxy via
+or configure npm proxy via, e.g.
 
-      npm config set proxy http://example.com:8080
+      npm config set proxy http://proxy.openkbs.org:8080
 ```
 

@@ -20,6 +20,7 @@ MY_DIR=$(dirname "$(readlink -f "$0")")
 
 DOCKERFILE=${1:-./Dockerfile}
 DOCKERFILE=$(realpath $DOCKERFILE)
+BUILD_CONTEXT=$(dirname ${DOCKERFILE})
 
 imageTag=${2}
 
@@ -126,19 +127,21 @@ function generateProxyArgs() {
     BUILD_ARGS="${BUILD_ARGS} ${PROXY_PARAM}"
 }
 generateProxyArgs
-echo "BUILD_ARGS=> ${BUILD_ARGS}"
+echo -e "BUILD_ARGS=> \n ${BUILD_ARGS}"
+echo
 
 ###################################################
 #### ---- Build Container ----
 ###################################################
 
+cd ${BUILD_CONTEXT}
 set -x
-echo "========> imageTag: ${imageTag}"
 docker build --rm -t ${imageTag} \
     ${BUILD_ARGS} \
     ${options} \
-    -f ${DOCKERFILE} .
+    -f $(basename ${DOCKERFILE}) .
 set +x
+cd -
 
 echo "----> Shell into the Container in interactive mode: "
 echo "  docker exec -it --name <some-name> /bin/bash"
