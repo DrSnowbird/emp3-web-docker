@@ -3,16 +3,17 @@
 
 # Reference
 * [missioncommand/emp3-web: EMP3-Web](https://github.com/missioncommand/emp3-web/blob/master/devguide/quickstart.html)
+
 # Run
 The default behavior is "grunt serve" to launch the Developmental Validation Tool and the web server will be available at
 http://localhost:3000/src/validation
 ```
 ./run.sh
 ./run.sh release
-(or other grunt 
-Then,
-   Open Web Browser: http://localhost:3000/src/validation
+./run.sh <other grunt options>
 ```
+Then, open your Web Browser: http://localhost:3000/src/validation
+
 You will see terminal console display message similar to below:
 ```
 Running "concurrent:prepValidation" (concurrent) task
@@ -37,7 +38,10 @@ Running "concurrent:prepValidation" (concurrent) task
 Running "webpack-dev-server:start" (webpack-dev-server) task
 webpack-dev-server on port 3000  
 ```
+
 # Build
+To build local image.
+
 ```
 ./build.sh
 ```
@@ -59,7 +63,6 @@ webpack-dev-server on port 3000
 * [openkbs/webstorm-docker](https://hub.docker.com/r/openkbs/webstorm-docker/)
 * [openkbs/webstorm-vnc-docker](https://hub.docker.com/r/openkbs/webstorm-vnc-docker/)
 
-
 # Setup Dockerfile to Build behind Corporate Proxies
 * See [Docker Proxy](https://docs.docker.com/engine/reference/commandline/cli/ https://docs.docker.com/network/proxy/)
 
@@ -76,21 +79,21 @@ $ export DOCKER_CONFIG=~/.docker/config.json
 It is recommended to set proxy with httpProxy, httpsProxy and ftpProxy in "**~/.docker/config.json**". You need to adjust the DNS proxy hostname accordign to your specifics of your corporate proxy.
 ```
 {
- "proxies":
- {
-   "default":
+   "proxies":
    {
-     "httpProxy": "http://proxy.openkbs.org:3001",
-     "httpsProxy": "http://proxy.openkbs.org:3001",
-     "ftpProxy": "http://proxy.openkbs.org:3001",
-     "noProxy": "127.0.0.1,localhost,.openkbs.org"
+       "default":
+       {
+           "httpProxy": "http://proxy.openkbs.org:8001",
+           "httpsProxy": "http://proxy.openkbs.org:8001",
+           "ftpProxy": "http://proxy.openkbs.org:8001",
+           "noProxy": "127.0.0.1,localhost,.openkbs.org"
+       }
    }
- }
 }
 ```
 Adjust proxy IP and port as needed and then save to ~/.docker/config.json
 
-# Grunt Tasks
+# Grunt Tasks Reference
 ```
 Available tasks
          concurrent  Run grunt tasks concurrently *                            
@@ -203,20 +206,18 @@ VERSION_CODENAME=xenial
 UBUNTU_CODENAME=xenial
 
 ```
-# Issues during Build
-You might see the following issues/warning/error messages.
+
+# Issues during Build behind Your Corporate Proxy/Firewall
+If you see similar issues/warning/error messages below and it means your corporate Proxy is blocking the downloading. You need to setup or export proxy environment variables if you don't want to use the pre-build images from openkbs/emp3-web-docker docker hub repo.
+
 ```
 Cannot download "https://github.com/sass/node-sass/releases/download/v3.13.1/linux-x64-64_binding.node": 
-
 HTTP error 404 Not Found
-
 Hint: If github.com is not accessible in your location
-      try setting a proxy via HTTP_PROXY, e.g. 
-
-      export HTTP_PROXY=http://proxy.openkbs.org:8080
-
+      try setting a proxy via http_proxy and/or HTTP_PROXY, e.g. 
+            export HTTP_PROXY=http://proxy.openkbs.org:8080
+            export http_proxy=http://proxy.openkbs.org:8080
 or configure npm proxy via, e.g.
-
-      npm config set proxy http://proxy.openkbs.org:8080
+            npm config set proxy http://proxy.openkbs.org:8080
 ```
 
