@@ -64,7 +64,7 @@ To build local image.
 * [openkbs/webstorm-vnc-docker](https://hub.docker.com/r/openkbs/webstorm-vnc-docker/)
 
 # Setup Dockerfile to Build behind Corporate Proxies
-* See [Docker Proxy](https://docs.docker.com/engine/reference/commandline/cli/ https://docs.docker.com/network/proxy/)
+* See [Docker Proxy](https://docs.docker.com/network/proxy/)
 
 For corporate with proxies, to build the images, you need to setup proxy. The better way to setup proxy for docker build and daemon is to use configuration file and there is no need to change the Dockerfile to contain your proxies setup.
 
@@ -74,9 +74,11 @@ With new feature in docker option --config, you needn't set Proxy in Dockerfile 
 or environment variable DOCKER_CONFIG
 
 `DOCKER_CONFIG` : The location of your client configuration files.
+```
+    export DOCKER_CONFIG=~/.docker/config.json
+```
+It is recommended to set proxy with httpProxy, httpsProxy and ftpProxy in "**~/.docker/config.json**". 
 
-$ export DOCKER_CONFIG=~/.docker/config.json
-It is recommended to set proxy with httpProxy, httpsProxy and ftpProxy in "**~/.docker/config.json**". You need to adjust the DNS proxy hostname accordign to your specifics of your corporate proxy.
 ```
 {
    "proxies":
@@ -91,7 +93,8 @@ It is recommended to set proxy with httpProxy, httpsProxy and ftpProxy in "**~/.
    }
 }
 ```
-Adjust proxy IP and port as needed and then save to ~/.docker/config.json
+You need to adjust the DNS proxy hostnames according to your your corporate proxy hostnames or IP addresses.
+
 
 # Grunt Tasks Reference
 ```
