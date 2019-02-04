@@ -48,7 +48,7 @@ RUN cd ${HOME}/emp3-web && \
     sudo chown -R ${USER}:${USER} ${HOME} && \
     sudo npm install -g grunt-cli  && \
     npm install && \
-    grunt --force
+    /usr/bin/grunt --force
 
 ####################################
 #### ---- Enterpoint setup ---- ####
@@ -57,9 +57,8 @@ USER ${USER}
 
 WORKDIR ${HOME}/emp3-web
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
-CMD ["/usr/bin/grunt --force serve"]
+ENTRYPOINT ["/usr/bin/grunt"]
+CMD ["serve"]
 
 #### (Test only)
 #CMD ["/usr/bin/firefox"]
