@@ -45,10 +45,11 @@ WORKDIR ${HOME}/emp3-web
 USER ${USER}
 
 RUN cd ${HOME}/emp3-web && \
-    sudo chown -R ${USER}:${USER} ${HOME} && \
     sudo npm install -g grunt-cli  && \
+    sudo chown -R ${USER}:${USER} ${HOME} && \
     npm install && \
-    /usr/bin/grunt --force
+    /usr/bin/grunt --force && \
+    sudo chown -R ${USER}:${USER} /usr/lib/node_modules
 
 ####################################
 #### ---- Enterpoint setup ---- ####
@@ -57,6 +58,8 @@ USER ${USER}
 
 WORKDIR ${HOME}/emp3-web
 
+#ENTRYPOINT ["/docker-entrypoint.sh"]
+#CMD ["/usr/bin/grunt", "serve"]
 ENTRYPOINT ["/usr/bin/grunt"]
 CMD ["serve"]
 

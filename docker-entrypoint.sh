@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+whoami
 env
 
 #exec "$@"

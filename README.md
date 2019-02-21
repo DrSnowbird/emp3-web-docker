@@ -63,6 +63,9 @@ To build local image.
 * [openkbs/webstorm-docker](https://hub.docker.com/r/openkbs/webstorm-docker/)
 * [openkbs/webstorm-vnc-docker](https://hub.docker.com/r/openkbs/webstorm-vnc-docker/)
 
+# Reference
+* [Use npx instead of npm](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+
 # Setup Dockerfile to Build behind Corporate Proxies
 * See [Docker Proxy](https://docs.docker.com/network/proxy/)
 
