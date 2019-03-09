@@ -3,9 +3,9 @@
 set -e
 whoami
 env
+id
 
-#exec "$@"
-/bin/bash -c "$@"
+/bin/bash -c "$*"
 
 tail -f /dev/null
 
