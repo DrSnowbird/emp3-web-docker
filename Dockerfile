@@ -34,14 +34,23 @@ RUN cd ${HOME}/emp3-web && \
 RUN sudo ln -s `which grunt` /usr/bin/grunt && \
     echo "grunt at: `which grunt`"
 
+RUN sudo apt-get update && sudo apt-get install -y nginx curl dnsmasq
+
+COPY ./nginx-conf/emp3-reverse-proxy.conf /etc/nginx/conf.d/
+
+EXPOSE 3000
+EXPOSE 3100
+EXPOSE 8080
+
 ####################################
 #### ---- Enterpoint setup ---- ####
 ####################################
 
-#ENTRYPOINT ["/docker-entrypoint.sh"]
-#CMD ["/usr/bin/grunt", "serve"]
-ENTRYPOINT ["/usr/bin/grunt"]
-CMD ["serve"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["grunt", "serve"]
+
+#ENTRYPOINT ["/usr/bin/grunt"]
+#CMD ["serve"]
 
 #### (Test only)
 #CMD ["/usr/bin/firefox"]

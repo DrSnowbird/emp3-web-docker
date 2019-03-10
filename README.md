@@ -4,6 +4,22 @@
 # Reference
 * [missioncommand/emp3-web: EMP3-Web](https://github.com/missioncommand/emp3-web/blob/master/devguide/quickstart.html)
 
+# Developer Mode
+From the console run:
+
+    npm install
+    grunt serve
+
+Open a browser to [localhost:3000/src/validation](http://localhost:3000/src/validation)
+
+# Release Mode
+
+    npm install
+    grunt release
+    
+Copy the WAR file from `dist/wars` and deploy them to Tomcat (see [openkbs/jdk-tomcat](https://cloud.docker.com/u/openkbs/repository/docker/openkbs/jdk-tomcat) ) or another web server application.
+Open a browser to [localhost:8080/emp3-validation/index.html](http://localhost:8080/emp3-validation/index.html)
+
 # Run
 The default behavior is "grunt serve" to launch the Developmental Validation Tool and the web server will be available at
 http://localhost:3000/src/validation
@@ -62,7 +78,7 @@ To build local image.
 * [openkbs/sublime-docker](https://hub.docker.com/r/openkbs/sublime-docker/)
 * [openkbs/webstorm-docker](https://hub.docker.com/r/openkbs/webstorm-docker/)
 * [openkbs/webstorm-vnc-docker](https://hub.docker.com/r/openkbs/webstorm-vnc-docker/)
-
+* [openkbs/jdk-tomcat](https://cloud.docker.com/u/openkbs/repository/docker/openkbs/jdk-tomcat) - for deploy the `war` file in the directory `dist/wars`.
 # Reference
 * [Use npx instead of npm](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
 
