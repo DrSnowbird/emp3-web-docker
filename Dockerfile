@@ -46,6 +46,7 @@ EXPOSE 8080
 #### ---- Enterpoint setup ---- ####
 ####################################
 
+RUN sudo chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["grunt", "serve"]
 
